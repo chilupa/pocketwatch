@@ -1,7 +1,9 @@
 {
-  "name": "expense-tracker",
+  "name": "pocketwatch",
   "version": "0.1.0",
   "private": true,
+  "description": "PocketWatch - Smart expense tracking and budget management app",
+  "keywords": ["expense tracker", "budget", "finance", "money management", "personal finance"],
   "scripts": {
     "dev": "next dev",
     "build": "next build",
