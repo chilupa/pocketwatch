@@ -81,28 +81,28 @@ export default function ExpenseForm({ onAddExpense, onEditExpense, editingExpens
 
   return (
     <form onSubmit={handleSubmit} className="bg-white p-6 rounded-lg shadow-md">
-      <h2 className="text-xl font-semibold mb-4">{editingExpense ? 'Edit Expense' : 'Add Expense'}</h2>
+      <h2 className="text-xl font-bold text-gray-900 mb-4">{editingExpense ? 'Edit Expense' : 'Add Expense'}</h2>
       
       <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
         <div>
-          <label className="block text-sm font-medium mb-1">Amount</label>
+          <label className="block text-sm font-semibold text-gray-900 mb-1">Amount</label>
           <input
             type="number"
             step="0.01"
             value={amount}
             onChange={(e) => setAmount(e.target.value)}
-            className="w-full p-2 border rounded-md"
+            className="w-full p-2 border rounded-md text-gray-900 font-medium"
             placeholder="0.00"
             required
           />
         </div>
         
         <div>
-          <label className="block text-sm font-medium mb-1">Category</label>
+          <label className="block text-sm font-semibold text-gray-900 mb-1">Category</label>
           <select
             value={category}
             onChange={(e) => setCategory(e.target.value)}
-            className="w-full p-2 border rounded-md"
+            className="w-full p-2 border rounded-md text-gray-900 font-medium"
           >
             {categories.map(cat => (
               <option key={cat} value={cat}>{cat}</option>
@@ -111,25 +111,25 @@ export default function ExpenseForm({ onAddExpense, onEditExpense, editingExpens
         </div>
         
         <div>
-          <label className="block text-sm font-medium mb-1">Description</label>
+          <label className="block text-sm font-semibold text-gray-900 mb-1">Description</label>
           <input
             type="text"
             value={description}
             onChange={(e) => setDescription(e.target.value)}
-            className="w-full p-2 border rounded-md"
+            className="w-full p-2 border rounded-md text-gray-900 font-medium"
             placeholder="What did you spend on?"
             required
           />
         </div>
         
         <div>
-          <label className="block text-sm font-medium mb-1">Date</label>
+          <label className="block text-sm font-semibold text-gray-900 mb-1">Date</label>
           <input
             type="date"
             value={date}
             onChange={(e) => setDate(e.target.value)}
             max={getLocalDateString()}
-            className="w-full p-2 border rounded-md"
+            className="w-full p-2 border rounded-md text-gray-900 font-medium"
             required
           />
         </div>

@@ -80,7 +80,7 @@ export default function ExpenseList({ expenses, onDeleteExpense, onEditExpense }
   if (expenses.length === 0) {
     return (
       <div className="bg-white p-6 rounded-lg shadow-md">
-        <h2 className="text-xl font-semibold mb-4">Recent Expenses</h2>
+        <h2 className="text-xl font-bold text-gray-900 mb-4">Recent Expenses</h2>
         <p className="text-gray-500">No expenses recorded yet.</p>
       </div>
     );
@@ -88,7 +88,7 @@ export default function ExpenseList({ expenses, onDeleteExpense, onEditExpense }
 
   return (
     <div className="bg-white p-6 rounded-lg shadow-md">
-      <h2 className="text-xl font-semibold mb-4">Recent Expenses</h2>
+      <h2 className="text-xl font-bold text-gray-900 mb-4">Recent Expenses</h2>
       
       {/* Search, Filter, and Sort */}
       <div className="mb-4 space-y-3">
@@ -98,12 +98,12 @@ export default function ExpenseList({ expenses, onDeleteExpense, onEditExpense }
             placeholder="Search expenses..."
             value={searchTerm}
             onChange={(e) => setSearchTerm(e.target.value)}
-            className="flex-1 p-2 border rounded-md text-sm"
+            className="flex-1 p-2 border rounded-md text-sm text-gray-900 font-medium"
           />
           <select
             value={filterCategory}
             onChange={(e) => setFilterCategory(e.target.value)}
-            className="p-2 border rounded-md text-sm"
+            className="p-2 border rounded-md text-sm text-gray-900 font-medium"
           >
             <option value="all">All Categories</option>
             {categories.map(cat => (
@@ -113,7 +113,7 @@ export default function ExpenseList({ expenses, onDeleteExpense, onEditExpense }
           <select
             value={timePeriod}
             onChange={(e) => setTimePeriod(e.target.value)}
-            className="p-2 border rounded-md text-sm"
+            className="p-2 border rounded-md text-sm text-gray-900 font-medium"
           >
             <option value="all">All Time</option>
             <option value="week">This Week</option>
@@ -127,7 +127,7 @@ export default function ExpenseList({ expenses, onDeleteExpense, onEditExpense }
             <select
               value={sortBy}
               onChange={(e) => setSortBy(e.target.value)}
-              className="p-2 border rounded-md text-sm"
+              className="p-2 border rounded-md text-sm text-gray-900 font-medium"
             >
               <option value="date">Date</option>
               <option value="amount">Amount</option>
@@ -136,7 +136,7 @@ export default function ExpenseList({ expenses, onDeleteExpense, onEditExpense }
             <select
               value={sortOrder}
               onChange={(e) => setSortOrder(e.target.value)}
-              className="p-2 border rounded-md text-sm"
+              className="p-2 border rounded-md text-sm text-gray-900 font-medium"
             >
               {sortBy === 'date' && (
                 <>
@@ -178,13 +178,13 @@ export default function ExpenseList({ expenses, onDeleteExpense, onEditExpense }
             {filteredAndSortedExpenses.slice((currentPage - 1) * itemsPerPage, currentPage * itemsPerPage).map((expense) => (
               <div key={expense.id} className="flex justify-between items-center p-3 border rounded-md">
                 <div>
-                  <div className="font-medium">{expense.description}</div>
+                  <div className="font-semibold text-gray-900">{expense.description}</div>
                   <div className="text-sm text-gray-500">
                     {expense.category} • {new Date(expense.date + 'T00:00:00').toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' })}
                   </div>
                 </div>
                 <div className="flex items-center gap-3">
-                  <span className="font-semibold text-lg">${expense.amount.toFixed(2)}</span>
+                  <span className="font-bold text-lg text-gray-900">${expense.amount.toFixed(2)}</span>
                   <button
                     onClick={() => onEditExpense(expense)}
                     className="text-blue-500 hover:text-blue-700 text-sm cursor-pointer"
@@ -208,7 +208,7 @@ export default function ExpenseList({ expenses, onDeleteExpense, onEditExpense }
                 <select
                   value={itemsPerPage}
                   onChange={(e) => setItemsPerPage(Number(e.target.value))}
-                  className="p-2 border rounded-md text-sm"
+                  className="p-2 border rounded-md text-sm text-gray-900 font-medium"
                 >
                   <option value={5}>5</option>
                   <option value={10}>10</option>

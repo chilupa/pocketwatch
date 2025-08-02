@@ -90,12 +90,12 @@ export default function ExpenseSummary({ expenses }: ExpenseSummaryProps) {
   return (
     <div className="bg-white p-6 rounded-lg shadow-md">
       <div className="mb-4">
-        <h2 className="text-xl font-semibold mb-3">Expense Summary</h2>
+        <h2 className="text-xl font-bold text-gray-900 mb-3">Expense Summary</h2>
         <div className="flex flex-col sm:flex-row gap-2">
           <select
             value={viewMode}
             onChange={(e) => setViewMode(e.target.value as 'list' | 'chart')}
-            className="p-2 border rounded-md text-sm"
+            className="p-2 border rounded-md text-sm text-gray-900 font-medium"
           >
             <option value="list">List View</option>
             <option value="chart">Chart View</option>
@@ -103,7 +103,7 @@ export default function ExpenseSummary({ expenses }: ExpenseSummaryProps) {
           <select
             value={period}
             onChange={(e) => setPeriod(e.target.value as 'month' | 'year')}
-            className="p-2 border rounded-md text-sm"
+            className="p-2 border rounded-md text-sm text-gray-900 font-medium"
           >
             <option value="month">This Month</option>
             <option value="year">This Year</option>
@@ -117,13 +117,13 @@ export default function ExpenseSummary({ expenses }: ExpenseSummaryProps) {
           <div className="space-y-3">
             <div className="grid grid-cols-2 gap-4">
               <div className="text-center">
-                <div className="text-lg font-bold text-blue-600">
+                <div className="text-lg font-bold text-blue-700">
                   ${currentMonthTotal.toFixed(2)}
                 </div>
                 <div className="text-xs text-gray-500">This Month</div>
               </div>
               <div className="text-center">
-                <div className="text-lg font-bold text-gray-600">
+                <div className="text-lg font-bold text-gray-800">
                   ${lastMonthTotal.toFixed(2)}
                 </div>
                 <div className="text-xs text-gray-500">Last Month</div>
@@ -143,7 +143,7 @@ export default function ExpenseSummary({ expenses }: ExpenseSummaryProps) {
           </div>
         ) : (
           <>
-            <div className="text-2xl font-bold text-blue-600">
+            <div className="text-2xl font-bold text-blue-700">
               ${totalAmount.toFixed(2)}
             </div>
             <div className="text-sm text-gray-500">
@@ -159,15 +159,15 @@ export default function ExpenseSummary({ expenses }: ExpenseSummaryProps) {
             <div className="space-y-3">
               {comparisonSummary.map((item) => (
                 <div key={item.category} className="border rounded-md p-3">
-                  <div className="font-medium mb-2">{item.category}</div>
+                  <div className="font-semibold text-gray-900 mb-2">{item.category}</div>
                   <div className="grid grid-cols-2 gap-2 text-sm">
                     <div>
                       <span className="text-gray-500">This Month:</span>
-                      <span className="font-semibold ml-1">${item.currentAmount.toFixed(2)}</span>
+                      <span className="font-bold text-gray-900 ml-1">${item.currentAmount.toFixed(2)}</span>
                     </div>
                     <div>
                       <span className="text-gray-500">Last Month:</span>
-                      <span className="font-semibold ml-1">${item.lastAmount.toFixed(2)}</span>
+                      <span className="font-bold text-gray-900 ml-1">${item.lastAmount.toFixed(2)}</span>
                     </div>
                   </div>
                   <div className={`text-xs mt-1 ${
@@ -187,7 +187,7 @@ export default function ExpenseSummary({ expenses }: ExpenseSummaryProps) {
                 const maxAmount = Math.max(...comparisonSummary.map(s => Math.max(s.currentAmount, s.lastAmount)));
                 return (
                   <div key={item.category} className="space-y-2">
-                    <div className="font-medium text-sm">{item.category}</div>
+                    <div className="font-semibold text-gray-900 text-sm">{item.category}</div>
                     <div className="space-y-1">
                       <div className="flex justify-between text-xs">
                         <span>This Month: ${item.currentAmount.toFixed(2)}</span>
@@ -222,10 +222,10 @@ export default function ExpenseSummary({ expenses }: ExpenseSummaryProps) {
             {summary.map((item) => (
               <div key={item.category} className="flex justify-between items-center">
                 <div>
-                  <div className="font-medium">{item.category}</div>
+                  <div className="font-semibold text-gray-900">{item.category}</div>
                   <div className="text-sm text-gray-500">{Math.round(item.percentage)}%</div>
                 </div>
-                <div className="font-semibold">${item.total.toFixed(2)}</div>
+                <div className="font-bold text-gray-900">${item.total.toFixed(2)}</div>
               </div>
             ))}
           </div>
@@ -239,8 +239,8 @@ export default function ExpenseSummary({ expenses }: ExpenseSummaryProps) {
                 return (
                   <div key={item.category} className="space-y-1">
                     <div className="flex justify-between text-sm">
-                      <span className="font-medium">{item.category}</span>
-                      <span>${item.total.toFixed(2)} ({Math.round(item.percentage)}%)</span>
+                      <span className="font-semibold text-gray-900">{item.category}</span>
+                      <span className="font-bold text-gray-900">${item.total.toFixed(2)} ({Math.round(item.percentage)}%)</span>
                     </div>
                     <div className="w-full bg-gray-200 rounded-full h-3">
                       <div 
@@ -255,7 +255,7 @@ export default function ExpenseSummary({ expenses }: ExpenseSummaryProps) {
             
             {/* Pie Chart (Simple CSS version) */}
             <div className="mt-6">
-              <h3 className="text-sm font-medium mb-3">Category Distribution</h3>
+              <h3 className="text-sm font-bold text-gray-900 mb-3">Category Distribution</h3>
               <div className="flex flex-wrap gap-2">
                 {summary.map((item) => {
                   const colors = ['bg-blue-500', 'bg-green-500', 'bg-yellow-500', 'bg-red-500', 'bg-purple-500', 'bg-pink-500', 'bg-indigo-500', 'bg-gray-500'];
@@ -263,7 +263,7 @@ export default function ExpenseSummary({ expenses }: ExpenseSummaryProps) {
                   return (
                     <div key={item.category} className="flex items-center gap-2 text-xs">
                       <div className={`w-3 h-3 rounded-full ${colors[colorIndex]}`}></div>
-                      <span>{item.category}</span>
+                      <span className="font-medium text-gray-900">{item.category}</span>
                     </div>
                   );
                 })}
